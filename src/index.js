@@ -6,7 +6,7 @@ module.exports = {
   bumperFactory: bumperFactory,
   DefaultBumper: DefaultBumper,
   defaultBumper: defaultBumper,
-  major: defaultBumper.major,
-  minor: defaultBumper.minor,
-  patch: defaultBumper.patch
+  major: defaultBumper.major.bind(defaultBumper),
+  minor: defaultBumper.minor.bind(defaultBumper),
+  patch: defaultBumper.patch.bind(defaultBumper)
 };
