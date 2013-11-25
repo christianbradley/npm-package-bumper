@@ -2,16 +2,21 @@ var expect = require("chai").expect,
 	sinon = require("sinon");
 
 describe("Bumper", function() {
+	"use strict";
 
 	var updated = void 0,
 		path = "path/to/package.json",
-		readPackage, writePackage,
-		BumpPackageVersion, bumper;
+		readPackage,
+		writePackage,
+		sandbox,
+		Bumper,
+		bumper,
+		defaultBumper;
 
 	beforeEach(function() {
 		sandbox = sinon.sandbox.create();
 
-		readPackage = sandbox.spy(function(path) {
+		readPackage = sandbox.spy(function() {
 			return '{ "version": "1.1.1" }';
 		});
 
@@ -23,6 +28,7 @@ describe("Bumper", function() {
 			writePackage: writePackage,
 			readPackage: readPackage
 		});
+
 		defaultBumper = new Bumper();
 		bumper = new Bumper({ filePath: path });
 	});
