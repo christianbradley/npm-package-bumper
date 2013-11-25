@@ -25,7 +25,8 @@
   },
   "devDependencies": {
     "chai": "~1.8.1",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "lodash": "~2.3.0"
   },
   "dependencies": {
     "semver": "~2.2.1"
