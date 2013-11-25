@@ -23,15 +23,27 @@ describe("Bumper", function() {
 			writePackage: writePackage,
 			readPackage: readPackage
 		});
-
+		defaultBumper = new Bumper();
 		bumper = new Bumper({ filePath: path });
 	});
 
 	afterEach(function() {
 		updated = void 0;
+		sandbox.restore();
+	});
+
+	it("defaults the filePath", function() {
+		defaultBumper.execute("major");
+		expect(defaultBumper.filePath).to.eql("package.json");
+		sinon.assert.calledWith(readPackage, "package.json");
+		sinon.assert.calledWith(writePackage, "package.json");
+	});
+
+	it("uses the supplied filePath", function() {
+		bumper.execute("patch");
+		expect(bumper.filePath).to.eql(path);
 		sinon.assert.calledWith(readPackage, path);
 		sinon.assert.calledWith(writePackage, path);
-		sandbox.restore();
 	});
 
 	it("bumps major version", function() {
