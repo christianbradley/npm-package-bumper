@@ -22,17 +22,17 @@ function factory(config) {
 	 * BumpPackageVersion Task Class
 	 * @param {object} params
 	 */
-	function BumpPackageVersion(params) { extend(this, params); }
+	function Bumper(params) { extend(this, params); }
 
 	// Default file path
-	BumpPackageVersion.prototype.filePath = "package.json";
+	Bumper.prototype.filePath = "package.json";
 
 	/**
 	 * Execute the task
 	 * @param  {string} type Version type (major, minor, patch)
 	 * @return {string}      new bumped version
 	 */
-	BumpPackageVersion.prototype.execute = function(type) {
+	Bumper.prototype.execute = function(type) {
 		var path = this.filePath, text, data, serialized;
 
 		// Read the package and deserialize
@@ -48,21 +48,21 @@ function factory(config) {
 	}
 
 	// Bump minor version
-	BumpPackageVersion.prototype.minor = function() {
+	Bumper.prototype.minor = function() {
 		return this.execute("minor");
 	}
 
 	// Bump major version
-	BumpPackageVersion.prototype.major = function() {
+	Bumper.prototype.major = function() {
 		return this.execute("major");
 	}
 
 	// Bump patch version
-	BumpPackageVersion.prototype.patch = function() {
+	Bumper.prototype.patch = function() {
 		return this.execute("patch");
 	}
 
-	return BumpPackageVersion;
+	return Bumper;
 }
 
 module.exports = factory;

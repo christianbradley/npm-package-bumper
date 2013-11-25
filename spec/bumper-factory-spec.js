@@ -19,7 +19,7 @@ describe("BumpPackageVersion", function() {
 			updated = JSON.parse(text);
 		});
 
-		BumpPackageVersion = require("../src/bump-package-version")({
+		BumpPackageVersion = require("../src/bumper-factory")({
 			writePackage: writePackage,
 			readPackage: readPackage
 		});

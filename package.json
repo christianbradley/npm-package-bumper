@@ -2,7 +2,7 @@
   "name": "npm-package-bumper",
   "version": "0.1.0",
   "description": "Bump an npm package.json version",
-  "main": "src/bump-package-version.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "mocha spec"
   },
