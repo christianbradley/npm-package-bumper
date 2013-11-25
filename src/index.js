@@ -1,11 +1,9 @@
-var bumperFactory = require("./bumper-factory"),
-    DefaultBumper = bumperFactory(),
+var bumper = require("./bumper"),
+    DefaultBumper = bumper.createClass(),
     defaultBumper = new DefaultBumper();
 
 module.exports = {
-  bumperFactory: bumperFactory,
-  DefaultBumper: DefaultBumper,
-  defaultBumper: defaultBumper,
+  bumper: bumper,
   major: defaultBumper.major.bind(defaultBumper),
   minor: defaultBumper.minor.bind(defaultBumper),
   patch: defaultBumper.patch.bind(defaultBumper)

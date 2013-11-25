@@ -1,7 +1,7 @@
 var expect = require("chai").expect,
 	sinon = require("sinon");
 
-describe("BumpPackageVersion", function() {
+describe("Bumper", function() {
 
 	var updated = void 0,
 		path = "path/to/package.json",
@@ -19,12 +19,12 @@ describe("BumpPackageVersion", function() {
 			updated = JSON.parse(text);
 		});
 
-		BumpPackageVersion = require("../src/bumper-factory")({
+		Bumper = require("../src/bumper").createClass({
 			writePackage: writePackage,
 			readPackage: readPackage
 		});
 
-		bumper = new BumpPackageVersion({ filePath: path });
+		bumper = new Bumper({ filePath: path });
 	});
 
 	afterEach(function() {

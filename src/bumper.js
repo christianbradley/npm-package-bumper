@@ -1,22 +1,22 @@
-function factory(config) {
+function createClass(config) {
+	"use strict";
+
+	if(!config) config = {};
 
 	var semver = require("semver"),
-		extend = require("lodash").extend,
-		$ = {
-			readPackage: function(path) {
-				return require("fs").readFileSync(path, "utf8")
-			},
-			writePackage: function(path, text) {
-				return require("fs").writeFileSync(path, text, "utf8");
-			},
-			serialize: function(data) {
-				return JSON.stringify(data, null, 2);
-			},
-			deserialize: JSON.parse
+		extend = config.extend || require("lodash").extend,
+		readPackage = config.readPackage || function(path) {
+			return require("fs").readFileSync(path, "utf8")
+		},
+		writePackage = config.writePackage || function(path, text) {
+			return require("fs").writeFileSync(path, text, "utf8");
+		},
+		serialize = config.serialize || function(data) {
+			return JSON.stringify(data, null, 2);
+		},
+		deserialize = config.deserialize || function(text) {
+			return JSON.parse(text);
 		};
-
-	// Override default configuration if provided
-	if(config !== void 0) extend($, config);
 
 	/**
 	 * BumpPackageVersion Task Class
@@ -36,13 +36,13 @@ function factory(config) {
 		var path = this.filePath, text, data, serialized;
 
 		// Read the package and deserialize
-		text = $.readPackage(path),
-		data = $.deserialize(text),
+		text = readPackage(path),
+		data = deserialize(text),
 
 		// Set the version, serialize, and write
 		data.version = semver.inc(data.version, type);
-		serialized = $.serialize(data);
-		$.writePackage(path, serialized);
+		serialized = serialize(data);
+		writePackage(path, serialized);
 
 		return data.version;
 	}
@@ -65,4 +65,6 @@ function factory(config) {
 	return Bumper;
 }
 
-module.exports = factory;
+module.exports = {
+	createClass: createClass
+};
