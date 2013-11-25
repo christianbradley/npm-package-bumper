@@ -1,4 +1,4 @@
-var bumperFactory = require("bumper-factory"),
+var bumperFactory = require("./bumper-factory"),
     DefaultBumper = bumperFactory(),
     defaultBumper = new DefaultBumper();
 
