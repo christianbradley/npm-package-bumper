@@ -1,6 +1,6 @@
 {
   "name": "npm-package-bumper",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "Bump an npm package.json version",
   "main": "src/npm-package-bumper.js",
   "scripts": {
