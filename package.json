@@ -2,7 +2,7 @@
   "name": "npm-package-bumper",
   "version": "0.1.7",
   "description": "Bump an npm package.json version",
-  "main": "src/index.js",
+  "main": "src/npm-package-bumper.js",
   "scripts": {
     "test": "mocha spec"
   },
@@ -23,13 +23,7 @@
   "bugs": {
     "url": "https://github.com/christianbradley/npm-package-bumper/issues"
   },
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "sinon": "~1.7.3",
-    "lodash": "~2.3.0"
-  },
   "dependencies": {
-    "semver": "~2.2.1",
-    "bump-anything": "~0.1.0"
+    "bump-anything": "< 1.0.0"
   }
 }
