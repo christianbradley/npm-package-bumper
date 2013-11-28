@@ -25,5 +25,10 @@
   },
   "dependencies": {
     "bump-anything": "< 1.0.0"
+  },
+  "devDependencies": {
+    "semver": "~2.2.1",
+    "when": "~2.6.0",
+    "bump-anything": "~0.1.1"
   }
 }
