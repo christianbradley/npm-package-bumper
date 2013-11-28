@@ -13,11 +13,10 @@ Bump an npm package.json version (minor, major, patch).
 
 ```javascript
 
-var bumper = require("npm-package-bumper");
+var bumper = require("npm-package-bumper").configure();
 
-bumper.major("package.json");
-bumper.minor("package.json");
-bumper.patch("package.json");
+// or 'minor', or 'patch'
+bumper.major("package.json").then(onResolve, onReject);
 
 ```
 
